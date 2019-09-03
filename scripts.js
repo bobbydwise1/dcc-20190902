@@ -26,6 +26,15 @@ class leastRecentlyUsedCache{
     }
     return this.cache
   }
+
+  get(key) {
+    for ( let i = 0; i < this.cache.length; i ++ ) {
+      if (this.cache[i].key == key) {
+        return this.cache[i].value
+      }
+    }
+  return null;
+  }
 }
 
 let test0 = new leastRecentlyUsedCache(5)
