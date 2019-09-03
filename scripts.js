@@ -48,9 +48,31 @@ test0.set('name','Janice')
 console.log(test0)
 
 $(document).ready(function() {
-  $('#output-section-0').text(1)
+  $('#div1').hide()
+  $('#div2').hide()
+  let recentCache;
+  let input0;
+  let input1;
+  let input12;
+  let input2;
+  $('#form0').submit(function(){
+    event.preventDefault()
+    input0 = $('#input-0').val()
+    recentCache = new leastRecentlyUsedCache(input0)
+    $('#div0').hide()
+    $('#div1').show()
+  });
   $('#form1').submit(function(){
     event.preventDefault()
-    $('#output-section-1').text(1)
+    $('#div2').show()
+    input1 = $('#input-1').val()
+    input12 = $('#input-1-2').val()
+    recentCache.set(input1,input12)
+    $('#output-section-1').text(JSON.stringify(recentCache.cache))
+  });
+  $('#form2').submit(function(){
+    event.preventDefault()
+    input2 = $('#input-2').val()
+    $('#output-section-2').text(recentCache.get(input2))
   });
 });
